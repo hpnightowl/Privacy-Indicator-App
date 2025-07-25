@@ -6,6 +6,7 @@
 
     <color name="blackPrimary">#000000</color>
     <color name="blackSecondary">#3e3e3e</color>
+    <color name="black">#000000</color>
 
     <color name="mic">#FFA840</color>
     <color name="cam">#FC6042</color>
@@ -20,4 +21,5 @@
 
     <color name="positiveButtonTextColor">@color/colorAccent</color>
     <color name="negativeButtonTextColor">@color/colorAccent</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -17,5 +17,5 @@ interface AccessLogsDao {
     fun getAllLogs(): LiveData<List<AccessLog>>
 
     @Query("DELETE FROM access_logs")
-    suspend fun clearLogs()
+    suspend fun clearLogs(): Int
 }

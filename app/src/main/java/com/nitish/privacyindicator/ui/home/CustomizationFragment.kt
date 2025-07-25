@@ -4,9 +4,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
-import com.github.dhaval2404.colorpicker.model.ColorShape
-import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import com.nitish.privacyindicator.R
 import com.nitish.privacyindicator.databinding.ContentCustomizationBinding
 import com.nitish.privacyindicator.databinding.FragmentCustomizationBinding
@@ -39,10 +36,10 @@ class CustomizationFragment : Fragment(R.layout.fragment_customization) {
     }
 
     private fun setUpView() {
-        customizationBinding.multiSwitchHorizontalHeight.selectedTab = viewModel.indicatorPosition.value!!.horizontal
-        customizationBinding.multiSwitchVerticalHeight.selectedTab = viewModel.indicatorPosition.value!!.vertical
-        customizationBinding.multiSwitchSize.selectedTab = viewModel.indicatorSize.value!!.ordinal
-        customizationBinding.multiSwitchOpacity.selectedTab = viewModel.indicatorOpacity.value!!.ordinal
+        customizationBinding.switchHorizontalHeight.isChecked = viewModel.indicatorPosition.value!!.horizontal == 1
+        customizationBinding.switchVerticalHeight.isChecked = viewModel.indicatorPosition.value!!.vertical == 1
+//        customizationBinding.switchIndicatorSize.isChecked = viewModel.indicatorSize.value == IndicatorSize.LARGE
+//        customizationBinding.switchOpacity.isChecked = viewModel.indicatorOpacity.value == IndicatorOpacity.HIGH
     }
 
     private fun setUpObservers() {
@@ -70,45 +67,25 @@ class CustomizationFragment : Fragment(R.layout.fragment_customization) {
     }
 
     private fun setUpListeners() {
-        customizationBinding.tileForeGround.setOnClickListener {
-            MaterialColorPickerDialog.Builder(requireContext())
-                    .setTitle("Indicator Foreground Color")
-                    .setColorShape(ColorShape.SQAURE)
-                    .setColorSwatch(ColorSwatch._200)
-                    .setDefaultColor(viewModel.indicatorForegroundColor.value!!)
-                    .setColorListener { _, colorHex ->
-                        viewModel.setIndicatorForegroundColor(colorHex)
-                    }.show()
+        customizationBinding.switchVerticalHeight.setOnCheckedChangeListener { _, isChecked ->
+            val vertical = if (isChecked) 1 else 0
+            val horizontal = if (customizationBinding.switchHorizontalHeight.isChecked) 1 else 0
+            viewModel.setIndicatorPosition(IndicatorPosition.getIndicatorPosition(vertical, horizontal))
         }
-
-        customizationBinding.tileBackGround.setOnClickListener {
-            MaterialColorPickerDialog.Builder(requireContext())
-                    .setTitle("Indicator Background Color")
-                    .setColorShape(ColorShape.SQAURE)
-                    .setColorSwatch(ColorSwatch._900)
-                    .setDefaultColor(viewModel.indicatorBackgroundColor.value!!)
-                    .setColorListener { _, colorHex ->
-                        viewModel.setIndicatorBackgroundColor(colorHex)
-                    }.show()
-        }
-
-        customizationBinding.multiSwitchVerticalHeight.setOnSwitchListener { vertical, _ ->
-            val horizontal = customizationBinding.multiSwitchHorizontalHeight.selectedTab
+        customizationBinding.switchHorizontalHeight.setOnCheckedChangeListener { _, isChecked ->
+            val horizontal = if (isChecked) 1 else 0
+            val vertical = if (customizationBinding.switchVerticalHeight.isChecked) 1 else 0
             viewModel.setIndicatorPosition(IndicatorPosition.getIndicatorPosition(vertical, horizontal))
         }
 
-        customizationBinding.multiSwitchHorizontalHeight.setOnSwitchListener { horizontal, _ ->
-            val vertical = customizationBinding.multiSwitchVerticalHeight.selectedTab
-            viewModel.setIndicatorPosition(IndicatorPosition.getIndicatorPosition(vertical, horizontal))
-        }
-
-        customizationBinding.multiSwitchSize.setOnSwitchListener { size, _ ->
-            viewModel.setIndicatorSize(IndicatorSize.values()[size])
-        }
-
-        customizationBinding.multiSwitchOpacity.setOnSwitchListener { opacity, _ ->
-            viewModel.setIndicatorOpacity(IndicatorOpacity.values()[opacity])
-        }
+//        customizationBinding.switchIndicatorSize.setOnCheckedChangeListener { _, isChecked ->
+//            val size = if (isChecked) IndicatorSize.LARGE else IndicatorSize.SMALL
+//            viewModel.setIndicatorSize(size)
+//        }
+//        customizationBinding.switchOpacity.setOnCheckedChangeListener { _, isChecked ->
+//            val opacity = if (isChecked) IndicatorOpacity.HIGH else IndicatorOpacity.LOW
+//            viewModel.setIndicatorOpacity(opacity)
+//        }
 
     }
 }

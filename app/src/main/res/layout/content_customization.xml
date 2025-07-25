@@ -30,38 +30,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeading01" />
 
-            <lib.kingja.switchbutton.SwitchMultiButton
-                android:id="@+id/multiSwitchVerticalHeight"
-                style="@style/MiltiSwitch"
+            <Switch
+                android:id="@+id/switchVerticalHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:paddingLeft="4dp"
-                android:paddingTop="8dp"
-                android:paddingRight="4dp"
-                android:paddingBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvHeading1"
-                app:selectedTab="0"
-                app:switchTabs="@array/indicator_position_vertical" />
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading1" />
 
-            <lib.kingja.switchbutton.SwitchMultiButton
-                android:id="@+id/multiSwitchHorizontalHeight"
+            <Switch
+                android:id="@+id/switchHorizontalHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginTop="8dp"
-                android:paddingLeft="4dp"
-                android:paddingTop="8dp"
-                android:paddingRight="4dp"
-                android:paddingBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/multiSwitchVerticalHeight"
-                app:switchTabs="@array/indicator_position_horizontal"
-                app:selectedTab="2"
-                style="@style/MiltiSwitch"/>
+                app:layout_constraintTop_toBottomOf="@+id/switchVerticalHeight" />
 
             <TextView
                 android:id="@+id/tvHeading2"
@@ -70,24 +56,16 @@
                 android:layout_marginTop="16dp"
                 android:text="Indicator Size"
                 style="@style/HeadingText"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/multiSwitchHorizontalHeight" />
+                app:layout_constraintStart_toStartOf="parent"/>
 
-            <lib.kingja.switchbutton.SwitchMultiButton
-                android:id="@+id/multiSwitchSize"
+            <Switch
+                android:id="@+id/switchIndicatorSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:paddingLeft="4dp"
-                android:paddingTop="8dp"
-                android:paddingRight="4dp"
-                android:paddingBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvHeading2"
-                app:switchTabs="@array/indicator_size"
-                app:selectedTab="2"
-                style="@style/MiltiSwitch"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading2" />
 
             <TextView
                 android:id="@+id/tvHeading3"
@@ -96,24 +74,16 @@
                 android:layout_marginTop="16dp"
                 android:text="Indicator Opacity"
                 style="@style/HeadingText"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/multiSwitchSize" />
+                app:layout_constraintStart_toStartOf="parent"/>
 
-            <lib.kingja.switchbutton.SwitchMultiButton
-                android:id="@+id/multiSwitchOpacity"
+            <Switch
+                android:id="@+id/switchOpacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:paddingLeft="4dp"
-                android:paddingTop="8dp"
-                android:paddingRight="4dp"
-                android:paddingBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvHeading3"
-                app:switchTabs="@array/indicator_opacity"
-                app:selectedTab="1"
-                style="@style/MiltiSwitch"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading3" />
 
             <LinearLayout
                 android:id="@+id/tvHeading0"
